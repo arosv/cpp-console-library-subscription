@@ -7,6 +7,7 @@ using namespace std;
 #include "file_reader.h"
 #include "filter.h"
 #include "constants.h"
+#include "processing.h"
 void output(book_subscription* subscription) {
     cout << "Number...............";
     cout << subscription->number << '\n';
@@ -55,27 +56,72 @@ int main()
             cout << subscriptions[i]->reader.middle_name[0] << ".";
             cout << '\n';
             cout << "Start.................";
-           // cout << setw(2) << setfill('0') << subscriptions[i]->start.CHCHCC << ':';
-            //cout << setw(2) << setfill('0') << subscriptions[i]->start.MM << ':';
-           // cout << setw(2) << setfill('0') << subscriptions[i]->start.CC << '\n';
+            cout << setw(2) << setfill('0') << subscriptions[i]->start.CHCHCC << ':';
+            cout << setw(2) << setfill('0') << subscriptions[i]->start.MM << ':';
+            cout << setw(2) << setfill('0') << subscriptions[i]->start.CC << '\n';
             cout << "Finish.................";
-           // cout << setw(2) << setfill('0') << subscriptions[i]->finish.CHCHCC << ':';
-            //cout << setw(2) << setfill('0') << subscriptions[i]->finish.MM << ':';
-            //cout << setw(2) << setfill('0') << subscriptions[i]->finish.CC << '\n';
+            cout << setw(2) << setfill('0') << subscriptions[i]->finish.CHCHCC << ':';
+            cout << setw(2) << setfill('0') << subscriptions[i]->finish.MM << ':';
+            cout << setw(2) << setfill('0') << subscriptions[i]->finish.CC << '\n';
             cout << "Club.................";
             cout << subscriptions[i]->club.name << '.';
             cout << '\n';
             cout << '\n';
         }
+
+        bool (*compare_function)(book_subscription*, book_subscription*) = NULL;
+        cout << ":\n";
+        cout << "1)scorost \n";
+        cout << "2)club name \n";
+        cout << "\n: ";
+        int item;
+        cin >> item;
+        cout << '\n';
+
+        switch (item)
+        {
+        case 1:
+            compare_function = compare_by_duration;
+            break;
+        case 2:
+            compare_function = compare_by_club;
+            break;
+        default:
+            throw "";
+        }
+        cout << ":\n";
+        cout << "1)quik sort \n";
+        cout << "2)bubble sort \n";
+        cout << "\n: ";
+        cin >> item;
+        cout << '\n';
+        switch (item)
+        {
+        case 1:
+            quik_sort(subscriptions, 0, size - 1, compare_function);
+            break;
+        case 2:
+            Bubble_sort(subscriptions, size, compare_function);
+            break;
+        default:
+            throw "";
+        }
+        cout << "*****  *****\n\n";
+        for (int i = 0; i < size; i++)
+        {
+            output(subscriptions[i]);
+        }
+
+
         bool (*check_function)(book_subscription*) = NULL;
         cout << "\n     :\n";
         cout << "1)Check by name 'Спартак'\n";
         cout << "2)Check by time\n";
         cout << "\n   : ";
-        int item;
-        cin >> item;
+        int tem;
+        cin >> tem;
         cout << '\n';
-        switch (item)
+        switch (tem)
         {
         case 1:
             check_function = check_by_name;
