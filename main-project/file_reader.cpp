@@ -31,7 +31,8 @@ void read(const char* file_name, book_subscription* array[], int& size)
         while (!file.eof())
         {
             book_subscription* item = new book_subscription;
-            file.getline(item->number, MAX_NUMBER_SIZE);
+            file >> tmp_buffer;
+            item->number = atoi(tmp_buffer);
             file >> item->reader.last_name;
             file >> item->reader.first_name;
             file >> item->reader.middle_name;
@@ -40,7 +41,7 @@ void read(const char* file_name, book_subscription* array[], int& size)
             file >> tmp_buffer;
             item->finish = convert_date(tmp_buffer);
             file.getline(item->club.name, MAX_NAME_SIZE); 
-            file.read(tmp_buffer, 1); // чтения лишнего символа пробела
+            //file.read(tmp_buffer, 1); // чтения лишнего символа пробела
             array[size++] = item;
         }
         file.close();

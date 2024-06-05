@@ -24,7 +24,7 @@ struct NAME
 
 struct book_subscription
 {
-    char number[MAX_NUMBER_SIZE];
+    int number;
     person reader;
     date start;
     date finish;
