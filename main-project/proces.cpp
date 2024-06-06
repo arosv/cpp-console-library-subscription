@@ -1,5 +1,31 @@
-// pch.cpp: source file corresponding to the pre-compiled header
+#include "processing.h"
+int secunds(date d)
+{
+	int result = 0;
 
-#include "proces.h"
+	result = d.CHCHCC*3600+d.MM*60+d.CC;
+	return result;
+}
 
-// When you are using pre-compiled headers, this source file is necessary for compilation to succeed.
+int diff(date a, date b)
+{
+	int x = secunds(a);
+	int y = secunds(b);
+	return (x > y ? x - y : y - x) + 1;
+}
+
+int process(book_subscription* array[], int size)
+{
+	int max = diff(array[0]->start, array[0]->finish);
+	for (int i = 1; i < size; i++)
+	{
+		int curr = diff(array[i]->start, array[i]->finish);
+		if (curr > max)
+		{
+			max = curr;
+		}
+	}
+	return max;
+}
+
+
