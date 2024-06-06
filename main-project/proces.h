@@ -6,7 +6,8 @@
 
 #ifndef Proces_H
 #define Proces_H
-
-// add headers that you want to pre-compile here
+int secunds(date d);
+int diff(date a, date b);
+int process(book_subscription* array[], int size);
 
 #endif //Proces_H

@@ -4,19 +4,10 @@
 #include "../main-project/proces.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
-#include "pch.h"
-#include "CppUnitTest.h"
-
-#include "../main-project/book_subscription.h"
-#include "../main-project/processing.h"
-
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace unittestproject
 {
-	//        
-	//             ,
-	//   ,     
+   
 	book_subscription* build_subscription(int start_chchcc, int start_mm, int start_cc, int finish_chchcc, int finish_mm, int finish_cc)
 	{
 		book_subscription* subscription = new book_subscription;
@@ -47,7 +38,7 @@ namespace unittestproject
 			subscriptions[0] = build_subscription(1, 1, 2015, 5, 1, 2015); // 5 
 			subscriptions[1] = build_subscription(2, 1, 2015, 8, 1, 2015); // 7 
 			subscriptions[2] = build_subscription(3, 1, 2015, 6, 1, 2015); // 4 
-			Assert::AreEqual(7, proces(subscriptions, 3));
+			Assert::AreEqual(7, process(subscriptions, 3));
 			delete_subscription(subscriptions, 3);
 		}
 
