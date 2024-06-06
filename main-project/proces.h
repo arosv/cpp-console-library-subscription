@@ -6,8 +6,5 @@
 
 #ifndef Proces_H
 #define Proces_H
-int secunds(date d);
-int diff(date a, date b);
-int process(book_subscription* array[], int size);
-
+int calculate_marafon_duration(book_subscription* array[], int size);
 #endif //Proces_H
